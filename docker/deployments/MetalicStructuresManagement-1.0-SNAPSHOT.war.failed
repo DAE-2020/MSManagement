@@ -1,7 +1,3 @@
-{"WFLYCTL0080: Failed services" => {"jboss.deployment.unit.\"MetalicStructuresManagement-1.0-SNAPSHOT.war\".component.ConfigEJB.START" => "java.lang.IllegalStateException: WFLYEE0042: Failed to construct component instance
-    Caused by: java.lang.IllegalStateException: WFLYEE0042: Failed to construct component instance
-    Caused by: javax.ejb.EJBTransactionRolledbackException: javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
-    Caused by: javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
-    Caused by: javax.persistence.PersistenceException: org.hibernate.exception.SQLGrammarException: could not execute statement
-    Caused by: org.hibernate.exception.SQLGrammarException: could not execute statement
-    Caused by: java.sql.SQLSyntaxErrorException: Table 'academics.USERS' doesn't exist"}}
+{"WFLYCTL0080: Failed services" => {"jboss.persistenceunit.\"MetalicStructuresManagement-1.0-SNAPSHOT.war#metalicsPU\"" => "org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+    Caused by: org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+    Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo cannot be null when 'hibernate.dialect' not set"}}

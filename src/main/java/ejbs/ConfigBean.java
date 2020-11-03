@@ -16,14 +16,14 @@ public class ConfigBean {
 
     @PostConstruct
     public void populateDB(){
-        Logger logger = Logger.getLogger("exceptions.CatchAllExceptions");
-        try {
+        //Logger logger = Logger.getLogger("exceptions.CatchAllExceptions");
+        //try {
             System.out.println("Started");
 
             administratorBean.create("admin", "admin", "Administrator", "admin@academic-management.com");
 
-        } catch(Exception e){
-            logger.warning("Error: " + e.getMessage());
-        }
+        //} catch(Exception e){
+        //    logger.warning("Error: " + e.getMessage());
+        //}
     }
 }

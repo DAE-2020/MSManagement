@@ -6,7 +6,6 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="EclipseLink" />
         <datasource-mapping>
-          <factory-entry name="default" />
           <factory-entry name="metalicsPU" />
         </datasource-mapping>
         <naming-strategy-map />
