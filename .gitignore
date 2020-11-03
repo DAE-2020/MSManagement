@@ -1,0 +1,7 @@
+
+
+### IntelliJ ###
+.idea/
+
+### Deployed Artifacts ###
+docker/deployments/

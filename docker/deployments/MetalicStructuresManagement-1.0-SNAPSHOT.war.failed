@@ -1,7 +1,0 @@
-{"WFLYCTL0080: Failed services" => {"jboss.deployment.unit.\"MetalicStructuresManagement-1.0-SNAPSHOT.war\".component.ConfigEJB.START" => "java.lang.IllegalStateException: WFLYEE0042: Failed to construct component instance
-    Caused by: java.lang.IllegalStateException: WFLYEE0042: Failed to construct component instance
-    Caused by: javax.ejb.EJBTransactionRolledbackException: javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
-    Caused by: javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
-    Caused by: javax.persistence.PersistenceException: org.hibernate.exception.SQLGrammarException: could not execute statement
-    Caused by: org.hibernate.exception.SQLGrammarException: could not execute statement
-    Caused by: java.sql.SQLSyntaxErrorException: Table 'academics.USERS' doesn't exist"}}

@@ -7,7 +7,7 @@ services:
         environment:
           - WILDFLY_USER=admin
           - WILDFLY_PASS=secret
-          - DB_NAME=academics
+          - DB_NAME=metalics
           - DB_USER=dae
           - DB_PASS=dae
           - DB_URI=db:3306
@@ -16,19 +16,19 @@ services:
         volumes:
           - ./deployments:/opt/jboss/wildfly/standalone/deployments/
         ports:
-          - 8080:8080 # application
+          - 8000:8000 # application
           - 9990:9990 # admin console
 
     db:
         container_name: dae_mysql
         image: mysql:latest
         environment:
-            - MYSQL_DATABASE=academics
+            - MYSQL_DATABASE=metalics
             - MYSQL_USER=dae
             - MYSQL_PASSWORD=dae
             - MYSQL_ROOT_PASSWORD=secret
-#        volumes:
-#            - ./workdir/db/init/:/docker-entrypoint-initdb.d/ # init database
-#            - ./workdir/db/data/:/var/lib/mysql/              # data storage
+        volumes:
+            - ./workdir/db/init/:/docker-entrypoint-initdb.d/ # init database
+            - ./workdir/db/data/:/var/lib/mysql/              # data storage
         ports:
             - 3306:3306

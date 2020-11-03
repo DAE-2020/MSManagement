@@ -28,7 +28,7 @@ ENV ENTRY_JBOSS_BATCH               /entrypoint-jboss-batch
 ENV ENTRY_DEPLOYMENTS               /entrypoint-deployments
 ENV READY_PATH                      /opt/jboss/ready
 
-ENV DB_NAME                         academics
+ENV DB_NAME                         metalics
 ENV DB_USER                         dae
 ENV DB_PASS                         dae
 ENV DB_URI                          db:3306
@@ -225,7 +225,7 @@ RUN echo ">  1. create folders and permissions" && \
 USER jboss
 
 # ports
-EXPOSE 8080 9990 8443 9993 8787
+EXPOSE 8000 9990 8443 9993 8787
 
 # check if wildfly is running
 HEALTHCHECK CMD ./healthcheck.sh
