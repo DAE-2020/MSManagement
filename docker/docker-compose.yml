@@ -1,6 +1,20 @@
 version: "3.8"
 services:
-    app:
+  db:
+    container_name: dae_mysql
+    image: mysql:latest
+    environment:
+      - MYSQL_DATABASE=metalics
+      - MYSQL_USER=dae
+      - MYSQL_PASSWORD=dae
+      - MYSQL_ROOT_PASSWORD=secret
+    volumes:
+      - ./workdir/db/init/:/docker-entrypoint-initdb.d/ # init database
+      - ./workdir/db/data/:/var/lib/mysql/              # data storage
+    ports:
+      - 3306:3306
+
+  app:
         build: .
         image: dae/wildfly
         container_name: dae_wildfly
@@ -18,17 +32,3 @@ services:
         ports:
           - 8000:8000 # application
           - 9990:9990 # admin console
-
-    db:
-        container_name: dae_mysql
-        image: mysql:latest
-        environment:
-            - MYSQL_DATABASE=metalics
-            - MYSQL_USER=dae
-            - MYSQL_PASSWORD=dae
-            - MYSQL_ROOT_PASSWORD=secret
-        volumes:
-            - ./workdir/db/init/:/docker-entrypoint-initdb.d/ # init database
-            - ./workdir/db/data/:/var/lib/mysql/              # data storage
-        ports:
-            - 3306:3306

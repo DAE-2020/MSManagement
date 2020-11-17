@@ -5,5 +5,8 @@
              version="2.2">
     <persistence-unit name="metalicsPU">
         <jta-data-source>java:/jdbc/datasources/metalicsDS</jta-data-source>
+        <properties>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+        </properties>
     </persistence-unit>
 </persistence>

@@ -30,14 +30,17 @@ public class User implements Serializable {
     private String name;
     @NotNull
     private String email;
+    @NotNull
+    private String role;
 
     public User(){}
 
-    public User(String username, String password, String name, String email) {
+    public User(String username, String password, String name, String email, String role) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.email = email;
+        this.role = role;
 
     }
 
@@ -79,6 +82,7 @@ public class User implements Serializable {
                 "username='" + username + '\'' +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
+                ", role='" + role + '\'' +
                 '}';
     }
 }

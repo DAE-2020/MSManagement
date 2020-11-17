@@ -76,11 +76,11 @@ RUN echo ">  1. create folders and permissions" && \
         echo '    echo "========================================================================="'; \
         echo '    if [ -z "${NO_ADMIN}" ]; then'; \
         echo '        WILDFLY_PASS=${WILDFLY_PASS:-$(tr -cd "[:alnum:]" < /dev/urandom | head -c20)}'; \
-        echo '        '${WILDFLY_HOME}'/bin/add-user.sh '${WILDFLY_USER}' ${WILDFLY_PASS} && \'; \
-        echo '        echo "  You can configure this WildFly-Server using:" && \'; \
+        echo '        '${WILDFLY_HOME}'/bin/add-user.sh '${WILDFLY_USER} ${WILDFLY_PASS}' && \ '; \
+        echo '        echo "  You can configure this WildFly-Server using:" && \ '; \
         echo '        echo "  '${WILDFLY_USER}':${WILDFLY_PASS}"'; \
         echo '    else'; \
-        echo '        echo "  You can NOT configure this WildFly-Server" && \'; \
+        echo '        echo "  You can NOT configure this WildFly-Server" && \ '; \
         echo '        echo "  because no admin-user was created."'; \
         echo '    fi'; \
         echo '    echo "========================================================================="'; \
@@ -164,7 +164,7 @@ RUN echo ">  1. create folders and permissions" && \
         echo; \
         echo './create_wildfly_admin.sh'; \
         echo; \
-        echo 'BATCH_FILES=$(comm -23 <(ls '${ENTRY_JBOSS_BATCH}' 2> /dev/null | grep -v .completed) \'; \
+        echo 'BATCH_FILES=$(comm -23 <(ls '${ENTRY_JBOSS_BATCH}' 2> /dev/null | grep -v .completed) \ '; \
         echo '    <(ls '${READY_PATH}' 2> /dev/null | grep .completed | sed "s/\.completed$//"))'; \
         echo 'echo "  ${BATCH_FILES}"'; \
         echo; \
@@ -225,7 +225,7 @@ RUN echo ">  1. create folders and permissions" && \
 USER jboss
 
 # ports
-EXPOSE 8000 9990 8443 9993 8787
+EXPOSE 8080 9990 8443 9993 8787
 
 # check if wildfly is running
 HEALTHCHECK CMD ./healthcheck.sh

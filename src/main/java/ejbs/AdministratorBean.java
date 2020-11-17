@@ -1,6 +1,7 @@
 package ejbs;
 
 import entities.Administrator;
+import entities.User;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -14,7 +15,7 @@ public class AdministratorBean {
 
     public void create (String username, String password, String name, String email) {
         try {
-            Administrator administrator = new Administrator(username, password, name, email);
+            User administrator = new Administrator(username, password, name, email);
             em.persist(administrator);
         } catch (Exception e) {
             System.out.println("ERROR! ERROR! ERROR!");
