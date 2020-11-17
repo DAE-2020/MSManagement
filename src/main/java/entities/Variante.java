@@ -3,7 +3,6 @@ package entities;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.LinkedHashMap;
-import java.util.List;
 
 @Entity
 public class Variante {
@@ -16,7 +15,7 @@ public class Variante {
     @ManyToOne
     @JoinColumn(name="NOME_PRODUTO")
     @NotNull
-    private Produto produto;
+    private Product product;
 
     @NotNull
     private String nome;
@@ -37,9 +36,9 @@ public class Variante {
         this.mcr_n = new LinkedHashMap<Double,Double>();
     }
 
-    public Variante(int codigo, @NotNull Produto produto, @NotNull String nome, double weff_p, double weff_n, double ar, double sigmaC ) {
+    public Variante(int codigo, @NotNull Product product, @NotNull String nome, double weff_p, double weff_n, double ar, double sigmaC ) {
         this.codigo = codigo;
-        this.produto = produto;
+        this.product = product;
         this.nome = nome;
         this.weff_p = weff_p;
         this.weff_n = weff_n;
@@ -58,12 +57,12 @@ public class Variante {
         this.codigo = code;
     }
 
-    public Produto getProduto() {
-        return produto;
+    public Product getProduto() {
+        return product;
     }
 
-    public void setProduto(Produto produto) {
-        this.produto = produto;
+    public void setProduto(Product product) {
+        this.product = product;
     }
 
     public String getNome() {

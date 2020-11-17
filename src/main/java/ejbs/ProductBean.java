@@ -1,19 +1,20 @@
 package ejbs;
 
-import entities.Produto;
+import entities.Product;
+import entities.Supplier;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Stateless
-public class ProdutoBean {
+public class ProductBean {
 
     @PersistenceContext
     EntityManager em;
 
-    public void create(String name){
-        Produto p = new Produto(name);
+    public void create(String name, Supplier supplier){
+        Product p = new Product(name, supplier);
         em.persist(p);
     }
 
