@@ -12,7 +12,7 @@ services:
       - ./workdir/db/init/:/docker-entrypoint-initdb.d/ # init database
       - ./workdir/db/data/:/var/lib/mysql/              # data storage
     ports:
-      - 3306:3306
+      - 3305:3306
 
   app:
         build: .
