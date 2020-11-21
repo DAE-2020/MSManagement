@@ -12,12 +12,8 @@ public class Product {
     private String nome;
     @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
     private List<Variante> variantes;
-    /*@ManyToMany(mappedBy = "produto")
-    @JoinTable(name = "PRODUCTS_PROJECTS",
-            joinColumns = @JoinColumn(name = "PRODUCT_CODE", referencedColumnName = "ID"),
-            inverseJoinColumns = @JoinColumn(name = "PROJECT_CODE", referencedColumnName =
-                    "ID"))
-    private List<Project> projects;*/
+    @ManyToMany(mappedBy = "products", cascade = CascadeType.REMOVE)
+    private List<Project> projects;
     @ManyToOne
     @JoinColumn(name = "SUPPLIER", referencedColumnName = "USERNAME")
     @NotNull
@@ -25,14 +21,14 @@ public class Product {
 
     public Product() {
         variantes = new LinkedList<>();
-        //projects = new LinkedList<>();
+        projects = new LinkedList<>();
     }
 
     public Product(String nome, Supplier supplier) {
         this.nome = nome;
         this.supplier = supplier;
         this.variantes = new LinkedList<>();
-        //this.projects = new LinkedList<>();
+        this.projects = new LinkedList<>();
     }
 
     public String getNome() {

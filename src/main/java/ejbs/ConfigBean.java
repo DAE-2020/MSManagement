@@ -1,5 +1,6 @@
 package ejbs;
 
+import entities.Designer;
 import entities.Supplier;
 
 import javax.annotation.PostConstruct;
@@ -20,6 +21,10 @@ public class ConfigBean {
     SupplierBean supplierBean;
     @EJB
     ProductBean productBean;
+    @EJB
+    DesignerBean designerBean;
+    @EJB
+    ProjectBean projectBean;
 
     @PostConstruct
     public void populateDB(){
@@ -32,6 +37,9 @@ public class ConfigBean {
         supplierBean.create("supplier", "supplier", "Fornecedor 1", "supplier1@academic-management.com");
         Supplier supplier = supplierBean.findSupplier("supplier");
         productBean.create("product1", supplier);
+        designerBean.create("designer", "designer", "Projectista 1", "designer1@academic-management.com");
+        Designer designer = designerBean.findDesigner("designer");
+        projectBean.create("project1", designer);
 
         //} catch(Exception e){
         //    logger.warning("Error: " + e.getMessage());

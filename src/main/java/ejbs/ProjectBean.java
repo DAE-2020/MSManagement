@@ -1,6 +1,6 @@
-/*
 package ejbs;
 
+import entities.Designer;
 import entities.Project;
 
 import javax.ejb.Stateless;
@@ -14,10 +14,10 @@ public class ProjectBean {
     @PersistenceContext
     EntityManager em;
 
-    public void create () {
+    public void create (String name, Designer designer) {
         try {
-            //User administrator = new Administrator(username, password, name, email);
-            //em.persist(administrator);
+            Project project = new Project(name, designer);
+            em.persist(project);
         } catch (Exception e) {
             System.out.println("ERROR! ERROR! ERROR!");
             System.out.println(e.getMessage());
@@ -28,4 +28,3 @@ public class ProjectBean {
         return em.createNamedQuery("getAllProjects", Project.class).getResultList();
     }
 }
-*/

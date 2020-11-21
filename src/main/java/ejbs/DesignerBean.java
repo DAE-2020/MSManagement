@@ -23,7 +23,7 @@ public class DesignerBean {
         }
     }
 
-    public Designer findDesginer(String username) {
+    public Designer findDesigner(String username) {
         return em.find(Designer.class, username);
     }
 }

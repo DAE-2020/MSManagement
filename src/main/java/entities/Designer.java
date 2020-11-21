@@ -14,24 +14,24 @@ import java.util.List;
 })
 
 public class Designer extends User implements Serializable {
-    //@OneToMany(mappedBy = "designer", cascade = CascadeType.REMOVE)
-    //private List<Project> projects;
+    @OneToMany(mappedBy = "designer", cascade = CascadeType.REMOVE)
+    private List<Project> projects;
 
     public Designer(){
-        //projects = new LinkedList<>();
+        projects = new LinkedList<>();
     }
 
     public Designer(String username, String password, String name, String email) {
         super(username, password, name, email, "Designer");
-        //this.projects = new LinkedList<>();
+        this.projects = new LinkedList<>();
     }
 
-    //public void addProject(Project project) {
-    //    projects.add(project);
-    //}
+    public void addProject(Project project) {
+        projects.add(project);
+    }
 
-    //public void removeProject(Project project) {
-    //    projects.remove(project);
-    //}
+    public void removeProject(Project project) {
+        projects.remove(project);
+    }
 
 }

@@ -20,8 +20,6 @@ import javax.validation.constraints.NotNull;
 })
 
 public class User implements Serializable {
-    @Version
-    private int version;
     @Id
     private String username;
     @NotNull

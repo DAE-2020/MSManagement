@@ -1,4 +1,3 @@
-/*
 package entities;
 
 import javax.persistence.*;
@@ -28,28 +27,20 @@ public class Project implements Serializable {
     @JoinColumn(name = "DESIGNER_CODE", referencedColumnName = "USERNAME")
     @NotNull
     private Designer designer;
-    @ManyToMany(mappedBy = "projects")
-    @JoinColumn(name = "PROJECT_CODE", referencedColumnName = "ID")
-    @NotNull
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "PROJECT_PRODUCTS",
+            joinColumns = @JoinColumn(name = "PROJECT_CODE", referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "PRODUCT_CODE", referencedColumnName = "NOME"))
     private List<Product> products;
 
     public Project() {
         products = new LinkedList<>();
     }
 
-    public Project(double id, String name, Designer designer) {
-        this.id = id;
+    public Project(String name, Designer designer) {
         this.name = name;
         this.designer = designer;
         this.products = new LinkedList<>();
-    }
-
-    public double getId() {
-        return id;
-    }
-
-    public void setId(double id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -83,4 +74,4 @@ public class Project implements Serializable {
     public void removeProduct(Product product) {
         products.remove(product);
     }
-}*/
+}
