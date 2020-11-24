@@ -18,7 +18,7 @@ public class DesignerBean {
             User designer = new Designer(username, password, name, email);
             em.persist(designer);
         } catch (Exception e) {
-            System.out.println("ERROR! ERROR! ERROR!");
+            System.out.println("ERROR! Designer");
             System.out.println(e.getMessage());
         }
     }

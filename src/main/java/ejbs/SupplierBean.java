@@ -18,7 +18,7 @@ public class SupplierBean {
             User supplier = new Supplier(username, password, name, email);
             em.persist(supplier);
         } catch (Exception e) {
-            System.out.println("ERROR! ERROR! ERROR!");
+            System.out.println("ERROR! Create Supplier!");
             System.out.println(e.getMessage());
         }
     }

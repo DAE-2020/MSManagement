@@ -12,6 +12,7 @@ import java.io.Serializable;
 })
 
 public class Client extends User implements Serializable {
+
     public Client(){}
 
     public Client(String username, String password, String name, String email) {

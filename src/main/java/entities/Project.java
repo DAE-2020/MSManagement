@@ -20,7 +20,8 @@ import java.util.List;
 })
 public class Project implements Serializable {
     @Id
-    private double id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     @NotNull
     private String name;
     @ManyToOne
@@ -28,19 +29,19 @@ public class Project implements Serializable {
     @NotNull
     private Designer designer;
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "PROJECT_PRODUCTS",
+    @JoinTable(name = "PROJECT_STRUCTURES",
             joinColumns = @JoinColumn(name = "PROJECT_CODE", referencedColumnName = "ID"),
-            inverseJoinColumns = @JoinColumn(name = "PRODUCT_CODE", referencedColumnName = "NOME"))
-    private List<Product> products;
+            inverseJoinColumns = @JoinColumn(name = "STRUCTURE_CODE", referencedColumnName = "ID"))
+    private List<Structure> structures;
 
     public Project() {
-        products = new LinkedList<>();
+        structures = new LinkedList<>();
     }
 
     public Project(String name, Designer designer) {
         this.name = name;
         this.designer = designer;
-        this.products = new LinkedList<>();
+        this.structures = new LinkedList<>();
     }
 
     public String getName() {
@@ -59,19 +60,19 @@ public class Project implements Serializable {
         this.designer = designer;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public List<Structure> getStructures() {
+        return structures;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setStructures(List<Structure> structures) {
+        this.structures = structures;
     }
 
-    public void addProduct(Product product) {
-        products.add(product);
+    public void addStructure(Structure structure) {
+        structures.add(structure);
     }
 
-    public void removeProduct(Product product) {
-        products.remove(product);
+    public void removeStructure(Structure structure) {
+        structures.remove(structure);
     }
 }

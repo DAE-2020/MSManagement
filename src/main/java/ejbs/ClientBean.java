@@ -18,7 +18,7 @@ public class ClientBean {
             User client = new Client(username, password, name, email);
             em.persist(client);
         } catch (Exception e) {
-            System.out.println("ERROR! ERROR! ERROR!");
+            System.out.println("ERROR! Create Client!");
             System.out.println(e.getMessage());
         }
     }
