@@ -1,9 +1,6 @@
 package ejbs;
 
-import entities.Designer;
-import entities.Product;
-import entities.Project;
-import entities.Supplier;
+import entities.*;
 import exceptions.MyEntityNotFoundException;
 
 import javax.ejb.Stateless;
@@ -17,13 +14,17 @@ public class ProjectBean {
     @PersistenceContext
     EntityManager em;
 
-    public void create (String name, String designerName) {
+    public void create (String name, String designerName, String clientName) {
         try {
             Designer designer = em.find(Designer.class, designerName);
             if(designer == null){
                 throw new MyEntityNotFoundException("Designer with username: " + designerName + " not found.");
             }
-            Project project = new Project(name, designer);
+            Client client = em.find(Client.class, clientName);
+            if(client == null){
+                throw new MyEntityNotFoundException("Client with username: " + clientName + " not found.");
+            }
+            Project project = new Project(name, designer, client);
             em.persist(project);
         } catch (Exception e) {
             System.out.println("ERROR! Create Project!");

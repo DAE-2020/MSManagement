@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 import javax.persistence.Table;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
@@ -39,7 +40,6 @@ public class User implements Serializable {
         this.name = name;
         this.email = email;
         this.role = role;
-
     }
 
     public String getUsername() {

@@ -28,6 +28,10 @@ public class Project implements Serializable {
     @JoinColumn(name = "DESIGNER_CODE", referencedColumnName = "USERNAME")
     @NotNull
     private Designer designer;
+    @ManyToOne
+    @JoinColumn(name = "CLIENT_CODE", referencedColumnName = "USERNAME")
+    @NotNull
+    private Client client;
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "PROJECT_STRUCTURES",
             joinColumns = @JoinColumn(name = "PROJECT_CODE", referencedColumnName = "ID"),
@@ -38,9 +42,10 @@ public class Project implements Serializable {
         structures = new LinkedList<>();
     }
 
-    public Project(String name, Designer designer) {
+    public Project(String name, Designer designer, Client client) {
         this.name = name;
         this.designer = designer;
+        this.client = client;
         this.structures = new LinkedList<>();
     }
 
@@ -58,6 +63,14 @@ public class Project implements Serializable {
 
     public void setDesigner(Designer designer) {
         this.designer = designer;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public List<Structure> getStructures() {

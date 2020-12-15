@@ -1,9 +1,6 @@
 package ejbs;
 
-import entities.Designer;
-import entities.Product;
-import entities.Structure;
-import entities.Supplier;
+import entities.*;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -32,6 +29,8 @@ public class ConfigBean {
     ProjectBean projectBean;
     @EJB
     StructureBean structureBean;
+    @EJB
+    AttachmentBean attachmentBean;
 
     @PostConstruct
     public void populateDB(){
@@ -52,7 +51,7 @@ public class ConfigBean {
             designerBean.create("designer", "designer", "Projectista 1", "designer1@academic-management.com");
 
             System.out.println("creating project ");
-            projectBean.create("project1", "designer");
+            projectBean.create("project1", "designer","client");
             List<Integer> products = new LinkedList<>();
             products.add(1);
             products.add(2);
@@ -61,6 +60,9 @@ public class ConfigBean {
             structureBean.create("structure1", products);
             System.out.println("add product in structure");
             structureBean.addProductToStructure(5,3);
+
+            System.out.println("add attachment referenced in structure");
+            attachmentBean.create("www.gitignore.com", "admin",0,0,5);
         } catch(Exception e){
             logger.warning("Error: " + e.getMessage());
         }
